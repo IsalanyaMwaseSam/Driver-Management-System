@@ -1,0 +1,16 @@
+{% load static %}
+{% include 'others/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="card">
+    <h6>Name: {{user.username}}</h6>
+    <h6>Email: {{user.email}}</h6>
+    <img src="static/images/{{ user.get_profile.avatar }}">
+    <h6>Phone Number: {{user.phone_number}}</h6>
+    <h6>Address: {{user.address}}</h6>
+    <h6>Car: {{user.car}}</h6>
+    <h6>password: {{user.password}}</h6>
+</div>
+{% endif %}
+{% endblock %}

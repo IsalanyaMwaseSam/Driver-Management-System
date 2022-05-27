@@ -1,0 +1,18 @@
+{% load static %}
+{% include 'others/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div id="Manage Drivers" class="tabcontent" style="margin-top: 0px; height: 100px; width: 100%; background: gray;">
+    <h3 style="text-align: center;  margin-top: 40px; color: white;">Register New Cars</h3>
+        <form style="margin-left: 300px; margin-top: 60px; width: 50%;" method="post">
+            {% csrf_token %}	
+            <div class="row justify-content-center" >
+                <div class="col-lg-12 col-sm-10">
+                          {{ form|crispy }}
+                          <input class="btn btn-primary" type="submit" href ="{% url 'home' %}" value="Register">
+                </div>
+            </div>
+        </form>      
+</div>
+{% endblock %}

@@ -1,0 +1,1 @@
+web: gunicorn driver_mgt_app.wsgi
