@@ -16,6 +16,11 @@ th{
     background-color: #337ab7;
     color: white;
 }
+@media only screen and (max-width: 1000px){
+    .table{
+        padding-left: 5px;
+    }
+}
 </style>
 {% block content %}
 <div class="col-md-10 mt-8">
@@ -36,7 +41,7 @@ th{
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a class="text-decoration-none text-dark" href="#">
+                    <a class="text-decoration-none text-dark" href="{% url 'ownerspay' %}">
                         <div class="card my-card shadow">
                             <div class="card-body text-center">
                                 <h4>Payments <i class="fas fa-box"></i></h4>
@@ -79,14 +84,13 @@ th{
                 <th scope="col">Action</th>
  
             </tr>
-        </thead>
         {% for car in object_list %}
         <tbody>
             <th scope="row">{{forloop.counter}}</th>
             <td>{{ car.type }}</td>
             <td>{{ car.date }}</td>
             <td>{{ car.number_plate }}</td>
-            <td>{{ car.cost }}</td>
+            <td>UGX {{ car.cost }}</td>
             <td><button type="button" class="btn btn-danger">Delete</button></td>
 
         </tbody>

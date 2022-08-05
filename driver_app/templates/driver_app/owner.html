@@ -1,3 +1,42 @@
 {% load static %}
 {% include 'others/base.html' %}
 {% include 'others/topside.html' %}
+{% block content %}
+{% if user.is_admin and user.is_superuser%}
+<div class="row" >
+    <div class="col-md-4 mt-4">
+        <div class="card" style="margin-top: 40px;">
+            <div class="card-header text-white" style="background-color: yellow; text-align: center;">
+                Total Complete Payments
+            </div>
+            <div class="card-body" style="background-color: yellow;">
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-md-4 mt-4">
+        <div class="card" style="margin-top: 40px;">
+            <div class="card-header text-white" style="background-color: red; text-align: center;">
+                Total Pending Payments
+            </div>
+            <div class="card-body" style="background-color: red;">
+                
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-md-4 mt-4">
+        <div class="card" style="margin-top: 40px;">
+            <div class="card-header text-white" style="background-color: green; text-align: center;">
+                Total Expected Earnings
+            </div>
+            <div class="card-body" style="background-color: green;">
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

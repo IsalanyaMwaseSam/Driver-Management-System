@@ -1,0 +1,95 @@
+{% load static %}
+{% include 'others/base.html' %}
+{% block content %}
+<div class="row" >
+    <div class="col-md-4 mt-4">
+        <div class="card" style="margin-top: 40px;">
+            <div class="card-header text-white" style="background-color: yellow; text-align: center;">
+                Make Payment
+            </div>
+            <div class="card-body" style="background-color: yellow;">
+                <div class="row">
+                    <div class="paying" style="margin-left: 40px;">
+                        <a class="text-decoration-none text-dark" href="{% url 'pay' %}">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-usd"><br>Make Your Payments</i>
+                                    <h3></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-md-4 mt-4">
+        <div class="card" style="margin-top: 40px;">
+            <div class="card-header text-white" style="background-color: red; text-align: center;">
+                Pending Payments
+            </div>
+            <div class="card-body" style="background-color: red;">
+                <div class="row">
+                    <div class="paying" style="margin-left: 40px;">
+                        <div class="card my-card shadow">
+                            <div class="card-body text-center">
+                                <i class="fas fa-usd"><br>Your Pending Payments</i>
+                                <h3></h3>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-md-4 mt-4">
+        <div class="card" style="margin-top: 40px;">
+            <div class="card-header text-white" style="background-color: green; text-align: center;">
+                Income Earned
+            </div>
+            <div class="card-body" style="background-color: green;">
+                <div class="row">
+                    <div class="paying" style="margin-left: 80px;">
+                        <a class="text-decoration-none text-dark" href="#">
+                            <div class="card my-card shadow">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-usd"><br>Total Income</i>
+                                    <h3></h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h5 style="text-align: center; font-weight: bold; margin-top: 30px;">Your Pending Payments! <a href="#"
+        style="font-size: 15px; text-decoration: none;"><i class="fa fa-eye" aria-hidden="true"></i>View All</a></h5>
+<div style="max-height: 420px;">
+    <table class="table" style="margin-top: 30px;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Date of due payment</th>
+                <th scope="col">Number Of Due Days</th>
+                <th scope="col">Amount Due</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" style="background-color: gray;">{{forloop.counter}}</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+{% endblock %}

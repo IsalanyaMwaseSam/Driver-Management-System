@@ -1,5 +1,7 @@
+from cProfile import Profile
 from django import forms
 from .models import Cars
+from accounts.models import Account
 
 
 class CarRegForm(forms.ModelForm):
@@ -19,4 +21,15 @@ class CarSearchForm(forms.ModelForm):
         model = Cars
         fields = ['type']
 
+class UpdateUserForm(forms.ModelForm):
+    name = forms.CharField(widget=forms.TextInput())
+    email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder':'input your email'}))
+    Profile = forms.ImageField(widget=forms.FileInput())
+    Password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'input new password'}))
+    Confirm_Password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Confirm new password'}))
+    address = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'input your address'}))
+    phone_number = forms.CharField(widget=forms.NumberInput(attrs={'placeholder':'input your phone number'}))
 
+    class Meta:
+        model = Account
+        fields = ('name', 'email', 'Profile', 'Password', 'Confirm_Password', 'address', 'phone_number')

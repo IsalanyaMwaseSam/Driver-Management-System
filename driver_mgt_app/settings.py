@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'driver_app',
     'accounts',
-    'crispy_forms'
+    'crispy_forms',
+    'paypal.standard.ipn', 
 ]
 
 MIDDLEWARE = [
@@ -143,4 +144,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = 'home'
+
+
+PAYPAL_RECEIVER_EMAIL = 'isalanyamwasesam@gmial.com'
+
+PAYPAL_TEST = True
+
 django_heroku.settings(locals())

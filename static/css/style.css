@@ -64,3 +64,9 @@ th{
     background-color: #337ab7;
     color: white;
 }
+
+@media only screen and (max-width: 800px){
+    .tabcontent{
+        margin-left: 100px;
+    }
+}

@@ -29,6 +29,13 @@
         background-size: cover;
         background-position: center;
     }
+    @media (min-width: 240px) {
+      .card-body{
+        width: 50%;
+        margin-left: -15px;
+      }
+      
+    }
     </style>
     
     </head>
@@ -58,12 +65,10 @@
                 </div>
                 <div class="col-lg-8">
                   <div class="card-body py-5 px-md-5">
-                    <form method="post">
-                      {% csrf_token %}	
-                      <form method="POST">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <input class="btn btn-success" href="{% url 'home' %}" type="submit" value="Login">
+                    <form method="POST">
+                      {% csrf_token %}
+                      {{ form|crispy }}
+                      <input class="btn btn-success" href="{% url 'home' %}" type="submit" value="Login">
                     </form>
                   </div>
                 </div>

@@ -13,4 +13,8 @@ urlpatterns = [
     path('car_reg/', views.car_reg, name='car_reg'),
     path('profile/', views.profile, name='profile'),
     path('carview/', CarView.as_view(), name='carview'),
+    path('payment/', views.payment, name='payment'),
+    path('pay/', views.pay, name='pay'),
+    path('ownerspay/', views.ownerspay, name='ownerspay'),
+    path('driverspending/', views.driverspending, name='driverspending'),
 ]
