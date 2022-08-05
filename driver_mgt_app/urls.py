@@ -20,5 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('driver_app.urls')),
     path('', include('accounts.urls')),
-    path('paypal/', include('paypal.standard.ipn.urls')),
 ]

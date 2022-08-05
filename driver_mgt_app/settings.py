@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'driver_app',
     'accounts',
     'crispy_forms',
-    'paypal.standard.ipn', 
 ]
 
 MIDDLEWARE = [
@@ -145,9 +144,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = 'home'
 
-
-PAYPAL_RECEIVER_EMAIL = 'isalanyamwasesam@gmial.com'
-
-PAYPAL_TEST = True
 
 django_heroku.settings(locals())
