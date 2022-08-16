@@ -7,14 +7,30 @@
 
 <div  class="tab-content" style="margin-top: 0px; height: 100px; width: 100%; background: gray;">
     <h3 style="text-align: center;  padding-top: 30px; color: white;">Register New Drivers</h3>
-      <div class="form" style="padding-top: 40px; width: 50%; padding-left: 40px;">
+      <div class="form" style=" margin-top: 35px; padding-top: 40px; width: 100%; padding-left: 20px; background-color: gainsboro; height: 650px;">
         <form  method="post">
             {% csrf_token %}	
-            <div class="row justify-content-center" >
-                <div class="col-lg-12 col-sm-10">
-                          {{ form|crispy }}
-                          <input class="btn btn-primary" type="submit" href ="{% url 'home' %}" value="Sign Up">
+            <div class="form-row" >
+                <div class="col-md-6 mb-0">
+                  {{ form.email|as_crispy_field }}
                 </div>
+                <div class="col-md-6 mb-0">
+                  {{ form.username|as_crispy_field }}
+                </div>
+                <div class="col-md-12 mb-0">
+                  {{ form.address|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                  {{ form.phone_number|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                  {{ form.car|as_crispy_field }}
+                </div>
+                <div class="col-md-12 mb-0">
+                  {{ form.details|as_crispy_field }}
+                </div>
+                <input style="margin-left: 10px;" class="btn btn-primary" type="submit" href ="{% url 'home' %}" value="Sign Up">
+
             </div>
         </form> 
       </div>     
