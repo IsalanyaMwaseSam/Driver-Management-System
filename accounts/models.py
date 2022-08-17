@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.base_user import BaseUserManager
 
 class MyAccountManager(BaseUserManager):
-    def _create_user(self, email, username, profile_pic, address, phone_number, car, details, password):
+    def _create_user(self, email, username, address, phone_number, car, details, password):
         if not email:
             raise ValueError("User must have an email")
         if not username:
@@ -15,7 +15,7 @@ class MyAccountManager(BaseUserManager):
 
         user = self.model(
                email = self.normalize_email(email),
-               username = username, profile_pic=profile_pic, address = address,
+               username = username, address = address,
                phone_number = phone_number, car=car, details=details, password=password
             )   
 
@@ -23,8 +23,8 @@ class MyAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user 
 
-    def create_user(self, email, username, profile_pic=None, address=None, phone_number=None, car=None, details=None, password=None):
-        return self._create_user(email, username, profile_pic, address, phone_number, car, details, password)
+    def create_user(self, email, username, address=None, phone_number=None, car=None, details=None, password=None):
+        return self._create_user(email, username, address, phone_number, car, details, password)
 
     def create_superuser(self, email, username, password):
         """
@@ -45,7 +45,6 @@ class MyAccountManager(BaseUserManager):
 class Account(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name="email", max_length=60, unique=True)
     username = models.CharField(verbose_name='username', unique=True, max_length=60, null=True)
-    profile_pic = models.ImageField(blank=False, null=True)
     address = models.CharField(verbose_name='address', max_length=200, null=True)
     phone_number = models.IntegerField(verbose_name='phone_number', null=True)
     car = models.CharField(verbose_name='car' , max_length=60, blank=False, null=True)
