@@ -1,3 +1,4 @@
+from ast import Delete
 from django.shortcuts import render, redirect
 from accounts.models import *
 from driver_app.models import Info
@@ -67,3 +68,9 @@ def ownerspay(request):
 
 def driverspending(request):
     return render(request, 'driver_app/driverspending.html', {}) 
+
+def delete_user(request, account_id):
+    account = Account.objects.get(pk=account_id)
+    account.delete()
+    messages.success(request, 'User successfully deleted!')
+    return redirect('staffview')
