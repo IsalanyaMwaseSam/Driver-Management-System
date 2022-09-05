@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn',
     'driver_app',
     'accounts',
     'crispy_forms',
@@ -147,3 +148,6 @@ LOGIN_REDIRECT_URL = 'home'
 
 
 django_heroku.settings(locals())
+
+PAYPAL_TEST = True
+PAYPAL_RECEIVER_EMAIL = 'sb-5akjh20367108@business.example.com'

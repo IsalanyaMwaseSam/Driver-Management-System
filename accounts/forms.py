@@ -14,6 +14,7 @@ class RegistrationForm(UserCreationForm):
     phone_number = forms.IntegerField(widget=forms.TextInput(attrs={'placeholder': 'phone_number'}))
     car = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'car'}))
     details = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'details'}))
+ 
 
 
     class Meta:

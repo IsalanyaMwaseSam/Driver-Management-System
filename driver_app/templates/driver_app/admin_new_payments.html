@@ -1,0 +1,30 @@
+{% load static %}
+{% include 'others/base.html' %}
+{% include 'others/sidebar.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="card" style="margin-top: 58px; margin-left: 270px; margin-right: 20px; height: 45px;">
+        <h3 style="text-align: center; padding-top: 0px;">Add New Payments</h3>
+        <form style=" height: 600px; padding-top: 60px; padding-left: 50px; background-color: gainsboro;"  method="post" >
+            {% csrf_token %}	
+            <div class="form-row" >
+                <div class="col-md-6 mb-0">
+                    {{ form.driver|as_crispy_field }}
+                  </div>
+                <div class="col-md-6 mb-0">
+                  {{ form.payment_made|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                  {{ form.balance|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                  {{ form.date_of_payment|as_crispy_field }}
+                </div>
+                <div class="col-md-12 mb-0">
+                  {{ form.status|as_crispy_field }}
+                </div>
+                <input style="margin-left: 10px;" class="btn btn-primary" type="submit" href ="{% url 'home' %}" value="Save">
+        </form> 
+    </div>    
+{% endblock %}

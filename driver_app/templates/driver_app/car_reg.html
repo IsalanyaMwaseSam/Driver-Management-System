@@ -1,11 +1,12 @@
 {% load static %}
 {% include 'others/base.html' %}
+{% include 'others/sidebar.html'%}
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div  class="tab-content" style="padding-top: 0px; height: 100px; width: 100%; background: gray;">
-    <h3 style="text-align: center;  padding-top: 40px; color: white;">Register New Cars</h3>
-    <form style=" margin-top: 30px; padding-top: 60px; width: 100%; padding-left: 50px; background-color: gainsboro; height: 650px;" method="post">
+<div  class="card" style="margin-top: 50px; margin-left: 300px; margin-right: 20px; height: 45px;">
+    <h3 style="text-align: center; color: black;">Register New Cars</h3>
+    <form style=" height: 600px; padding-top: 60px; padding-left: 50px; background-color: gainsboro;" method="post">
         {% csrf_token %}	
         <div class="form-row" >
             <div class="col-md-6 mb-0">
@@ -15,7 +16,7 @@
                 {{ form.date|as_crispy_field }}
             </div>
             <div class="col-md-12 mb-0">
-                {{ form.number_plate|as_crispy_field }}
+                {{ form.number_Plate|as_crispy_field }}
             </div>
             <div class="col-md-12 mb-0">
                 {{ form.cost|as_crispy_field }}

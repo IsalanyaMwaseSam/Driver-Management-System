@@ -1,37 +1,44 @@
 {% load static %}
 {% include 'others/base.html' %}
+{% include 'others/sidebar.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 
 
 
-<div  class="tab-content" style="margin-top: 0px; height: 100px; width: 100%; background: gray;">
-    <h3 style="text-align: center;  padding-top: 30px; color: white;">Register New Drivers</h3>
-      <div class="form" style=" margin-top: 35px; padding-top: 40px; width: 100%; padding-left: 20px; background-color: gainsboro; height: 650px;">
-        <form  method="post">
-            {% csrf_token %}	
-            <div class="form-row" >
-                <div class="col-md-6 mb-0">
-                  {{ form.email|as_crispy_field }}
-                </div>
-                <div class="col-md-6 mb-0">
-                  {{ form.username|as_crispy_field }}
-                </div>
-                <div class="col-md-12 mb-0">
-                  {{ form.address|as_crispy_field }}
-                </div>
-                <div class="col-md-6 mb-0">
-                  {{ form.phone_number|as_crispy_field }}
-                </div>
-                <div class="col-md-6 mb-0">
-                  {{ form.car|as_crispy_field }}
-                </div>
-                <div class="col-md-12 mb-0">
-                  {{ form.details|as_crispy_field }}
-                </div>
-                <input style="margin-left: 10px;" class="btn btn-primary" type="submit" href ="{% url 'home' %}" value="Sign Up">
-
-            </div>
+<div  class="card"style="margin-top: 58px; margin-left: 300px; margin-right: 20px; height: 45px;">
+    <h3 style="text-align: center; color: black;">Register New Drivers</h3>
+      <div class="form" style=" height: 700px; padding-top: 60px; padding-left: 50px; background-color: gainsboro;">
+        <form method="POST" action="{% url 'register' %}">
+          {% csrf_token %}    
+          <div class="form-row" >
+              <div class="col-md-6 mb-0">
+                {{ form.email|as_crispy_field }}
+              </div>
+              <div class="col-md-6 mb-0">
+                {{ form.username|as_crispy_field }}
+              </div>
+              <div class="col-md-6 mb-0">
+                {{ form.password1|as_crispy_field }}
+              </div>
+              <div class="col-md-6 mb-0">
+                {{ form.password2|as_crispy_field }}
+              </div>
+              <div class="col-md-12 mb-0">
+                {{ form.address|as_crispy_field }}
+              </div>
+              <div class="col-md-6 mb-0">
+                {{ form.phone_number|as_crispy_field }}
+              </div>
+              <div class="col-md-6 mb-0">
+                {{ form.car|as_crispy_field }}
+              </div>
+              <div class="col-md-12 mb-0">
+                {{ form.details|as_crispy_field }}
+              </div>
+              <input style="margin-left: 10px;" href="{% url 'home' %}" class="btn btn-primary" type="submit" value="Sign Up">
+  
+          </div>
         </form> 
       </div>     
 </div>
