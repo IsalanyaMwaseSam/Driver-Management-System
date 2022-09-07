@@ -48,11 +48,14 @@
         </ul>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-money' ></i>
-          <span class="link_name">Payments</span>
-        </a>
-        <ul class="sub-menu blank">
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-money' ></i>
+            <span class="link_name">Payments</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
           <li><a class="link_name" href="#">Complete Payments</a></li>
           <li><a href="#">Pending Payments</a></li>
           <li><a href="{% url 'new-payments' %}">Add New Payments</a></li>
