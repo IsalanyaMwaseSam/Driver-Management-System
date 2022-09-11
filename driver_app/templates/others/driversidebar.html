@@ -4,10 +4,27 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/static/css/sidebarstyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
+   <style>
+    .notifications{
+    position: absolute;
+    border-radius: 50%;
+    font-size: 13px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    margin-left: 40px;
+    background-color: blue;
+    color: white;
+}
+   </style>
 <body>
   <div class="sidebar close">
     <div class="logo-details">
@@ -24,47 +41,23 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-user' ></i>
-            <span class="link_name">Staff</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="sub-menu">
-          <li><a class="link_name" href="{% url 'staffview' %}">View Staff</a></li>
-          <li><a href="{% url 'register' %}">Register New Staff</a></li>
-        </ul>
-      </li>
-      <li>
-        <div class="iocn-link">
-          <a href="#">
-            <i class='bx bx-car' ></i>
-            <span class="link_name">Cars</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="sub-menu">
-          <li><a class="link_name" href="{% url 'cars' %}">View Cars</a></li>
-          <li><a href="{% url 'car_reg' %}">Register New Car</a></li>
-        </ul>
-      </li>
-      <li>
-        <div class="iocn-link">
-          <a href="#">
             <i class='bx bx-money' ></i>
             <span class="link_name">Payments</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
         </div>
         <ul class="sub-menu">
-          <li><a class="link_name" href="#">Complete Payments</a></li>
-          <li><a href="#">Pending Payments</a></li>
-          <li><a href="{% url 'new-payments' %}">Add New Payments</a></li>
+          <li><a class="link_name" href="{% url 'admin-complete-payments' %}">Complete Payments</a></li>
+          <li><a href="{% url 'admin-pending-payments' %}">Pending Payments</a></li>
+          <li><a href="{% url 'pay' %}">Make a Payment</a></li>
         </ul>
       </li>
+      
       <li>
-        <a href="#">
-          <i class='bx bx-bell' ></i>
-          <span class="link_name">Notifications</span>
+        <a href="{% url 'notifications' %}">
+          <i class='fa fa-bell' ></i>
+          <span class="notifications">{{ info.count }}</span>
+          <span class="link_name">Notifications</span>  
         </a>
       </li>
       <li>

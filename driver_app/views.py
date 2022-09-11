@@ -116,3 +116,21 @@ def new_payment(request):
     context = {'form':form}
     return render(request, 'driver_app/admin_new_payments.html', context)
 
+class PaymentView(ListView):
+    model = Payment
+    paginate_by = 6
+    template_name = 'driver_app/admin_complete_payments.html'
+
+class PendingPaymentView(ListView):
+    model = Payment
+    paginate_by = 6
+    template_name = 'driver_app/admin_pending_payments.html'
+
+def createnotifications(request):
+    return render(request, 'driver_app/create_notifications.html', {})
+
+def notification(request):
+    info = Info.objects.all()
+    notifications = Info.objects.all().count()
+    return render(request, 'driver_app/notifications.html', {'info':info, 'notifications':notifications})
+

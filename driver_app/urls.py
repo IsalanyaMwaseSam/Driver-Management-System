@@ -20,4 +20,8 @@ urlpatterns = [
     path('paypal-return/', views.PaypalReturnView.as_view(), name='paypal-return'),
     path('paypal-cancel/', views.PaypalCancelView.as_view(), name='paypal-cancel'),
     path('new-payments/', views.new_payment, name='new-payments'),
+    path('admin-complete-payments/', views.PaymentView.as_view(), name='admin-complete-payments'),
+    path('admin-pending-payments/', views.PendingPaymentView.as_view(), name='admin-pending-payments'),
+    path('create-notifications/', views.createnotifications, name='create-notifications'),
+    path('notifications/', views.notification, name='notifications'),
 ]

@@ -21,30 +21,35 @@
 {% block content %}
 {% if user.is_admin %}
 {% for message in messages %}
-<div style="width: 50%; margin-top: 58pxpx; margin-left: 300px;" class="alert alert-success" role="alert">{{message}}</div>
+<div style="width: 50%; margin-top: 58pxpx; margin-left: 270px;" class="alert alert-success" role="alert">{{message}}</div>
 {% endfor %}
-<div class="table" style="margin-top: 50px; margin-left: 300px; margin-right: 30px; width: 70%;">
+
+<div class="table" style="margin-top: 50px; margin-left: 270px; margin-right: 30px; width: 70%;">
     <table class="table">
         <thead>
             <tr>
                 <th scope="col"></th>
-                <th scope="col">Type</th>
-                <th scope="col">Date</th>
-                <th scope="col">Number Plate</th>
-                <th scope="col">Cost</th>
+                <th scope="col">Driver</th>
+                <th scope="col">Payment made</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Date of payment</th>
+                <th scope="col">Status</th>
                 <th scope="col">Action</th>
  
             </tr>
-        {% for car in object_list %}
+        {% for payment in object_list %}
+        {% if payment.balance  > 0 %}
         <tbody>
             <th scope="row">{{forloop.counter}}</th>
-            <td>{{ car.type }}</td>
-            <td>{{ car.date }}</td>
-            <td>{{ car.number_Plate }}</td>
-            <td>UGX {{ car.cost }}</td>
-            <td><a type="button" href="{% url 'delete_car' car.id %}" class="btn btn-danger">Delete</a></td>
+            <td>{{ payment.driver }}</td>
+            <td>UGX{{ payment.payment_made }}</td>
+            <td>UGX{{ payment.balance }}</td>
+            <td> {{ payment.date_of_payment }}</td>
+            <td> {{ payment.status }}</td>
+            <td><a type="button" href="#" class="btn btn-danger">Delete</a></td>
 
         </tbody>
+        {% endif %}
         {% endfor %}
     </table>
     {% if is_paginated %}

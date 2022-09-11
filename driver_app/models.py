@@ -19,6 +19,10 @@ class Cars(models.Model):
     def __str__(self):
         return self.type
 
+    class Meta:
+        verbose_name = 'Cars'
+        verbose_name_plural = 'Cars'
+
 class Payment(models.Model):
     driver = models.ForeignKey(Account, on_delete=models.CASCADE)
     payment_made = models.FloatField(verbose_name='payment made', null=True, blank=False)

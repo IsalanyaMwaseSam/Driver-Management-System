@@ -1,17 +1,38 @@
 {% load static %}
 {% include 'others/base.html' %}
+{% include 'others/driversidebar.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="form" style="margin-top: 50px; width: 50%;">
-  <form  method="post">
-    {% csrf_token %}	
-    <div class="row justify-content-center" >
-      <div class="col-lg-12 col-sm-10">
-        {{ form|crispy }}
-        <input class="btn btn-primary" type="submit" href ="{% url 'home' %}" value="Update">
-      </div>
-    </div>
-  </form> 
-</div>     
+
+
+<div  class="card"style="margin-top: 58px; margin-left: 300px; margin-right: 20px; height: 45px;">
+    <h3 style="text-align: center; color: black;">Update Profile</h3>
+      <div class="form" style=" height: 700px; padding-top: 60px; padding-left: 50px; background-color: gainsboro;">
+        <form method="POST" action="{% url 'register' %}">
+          {% csrf_token %}    
+          <div class="form-row" >
+            <div class="col-md-6 mb-0">
+              {{ form.email|as_crispy_field }}
+            </div>
+            <div class="col-md-6 mb-0">
+              {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col-md-6 mb-0">
+              {{ form.Password|as_crispy_field }}
+            </div>
+            <div class="col-md-6 mb-0">
+              {{ form.Confirm_Password|as_crispy_field }}
+            </div>
+            <div class="col-md-12 mb-0">
+              {{ form.address|as_crispy_field }}
+            </div>
+            <div class="col-md-6 mb-0">
+              {{ form.phone_number|as_crispy_field }}
+            </div>
+          </div>
+          <input style="margin-left: 10px;" href="{% url 'home' %}" class="btn btn-primary" type="submit" value="Sign Up">
+        </form> 
+      </div>     
+</div>
 {% endblock %}

@@ -1,0 +1,10 @@
+{% load static %}
+{% include 'others/base.html' %}
+{% include 'others/adminsidebar.html' %}
+{% block content %}
+{% for instance in info %}
+    <div class="card-body">           
+     <h3 class="my-4">{{ instance.information }}</h3>            
+    </div>
+{% endfor %}
+{% endblock %}

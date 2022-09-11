@@ -1,6 +1,6 @@
 {% load static %}
 {% include 'others/base.html' %}
-{% include 'others/sidebar.html'%}
+{% include 'others/adminsidebar.html'%}
 <style>
   .table{
       font-size: 13px;
@@ -23,7 +23,7 @@
 {% for message in messages %}
 <div style="width: 50%; margin-top: 58pxpx; margin-left: 270px;" class="alert alert-success" role="alert">{{message}}</div>
 {% endfor %}
-<div class="table" style="margin-top: 50px; margin-left: 270px; margin-right: 30px; width: 80%;">
+<div class="table" style="margin-top: 50px; margin-left: 270px; margin-right: 30px; width: 70%;">
     <table class="table">
         <thead>
             <tr>
@@ -33,16 +33,17 @@
                 <th scope="col">Balance</th>
                 <th scope="col">Date of payment</th>
                 <th scope="col">Status</th>
+                <th scope="col">Action</th>
  
             </tr>
-        {% for car in object_list %}
+        {% for payment in object_list %}
         <tbody>
             <th scope="row">{{forloop.counter}}</th>
-            <td>{{ completepayment.driver }}</td>
-            <td>UGX{{ completepayment.payment_made }}</td>
-            <td>UGX{{ completepayment.balance }}</td>
-            <td> {{ completepayment.date_of_payment }}</td>
-            <td> {{ completepayment.status }}</td>
+            <td>{{ payment.driver }}</td>
+            <td>UGX{{ payment.payment_made }}</td>
+            <td>UGX{{ payment.balance }}</td>
+            <td> {{ payment.date_of_payment }}</td>
+            <td> {{ payment.status }}</td>
             <td><a type="button" href="#" class="btn btn-danger">Delete</a></td>
 
         </tbody>
