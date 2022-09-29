@@ -8,13 +8,9 @@
             <div class="card-header bg-info text-white">
                 <i class="fas fa-bell"></i>   Notifications
             </div>
-            {% for instance in queryset %}
             <div class="card-body">
-                <marquee behavior="" direction="">
-                    <h3 class="my-4">{{ instance.information }}</h3>
-                </marquee>
+              <h3 class="my-4">{{ notification_count }}</h3>
             </div>
-            {% endfor %}
         </div>
     </div>
     <div class="col-md-8 mt-4">
@@ -29,17 +25,17 @@
                             <div class="card my-card shadow">
                                 <div class="card-body text-center">
                                     <h4>Staff <i class="fas fa-users"></i></h4>
-                                    <h3>{{ Accounts_count }}</h3>
+                                    <h3 style="color: green;">{{staff_count}}</h3>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a class="text-decoration-none text-dark" href="{% url 'ownerspay' %}">
+                        <a class="text-decoration-none text-dark" href="{% url 'admin-complete-payments' %}">
                             <div class="card my-card shadow">
                                 <div class="card-body text-center">
                                     <h4>Payments <i class="fas fa-box"></i></h4>
-                                    <h3>{{ product_count }}</h3>
+                                    <h3 style="color: yellow;">{{ payment_count }}</h3>
                                 </div>
                             </div>
                         </a>
@@ -49,7 +45,7 @@
                             <div class="card my-card shadow">
                                 <div class="card-body text-center">
                                     <h4>Cars <i class="fas fa-shipping-fast"></i></h4>
-                                    <h3>{{ cars_count }}</h3>
+                                    <h3 style="color: blue;">{{ car_count }}</h3>
                                 </div>
                             </div>
                         </a>

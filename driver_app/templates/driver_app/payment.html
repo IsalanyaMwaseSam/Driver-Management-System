@@ -1,73 +1,84 @@
 {% load static %}
 {% include 'others/base.html' %}
-{% block content %}
-<div class="row" >
-    <div class="col-md-4 mt-4">
-        <div class="card" style="margin-top: 40px;">
-            <div class="card-header text-white" style="background-color: yellow; text-align: center;">
-                Make Payment
-            </div>
-            <div class="card-body" style="background-color: yellow;">
-                <div class="row">
-                    <div class="paying" style="margin-left: 40px;">
-                        <a class="text-decoration-none text-dark" href="{% url 'pay' %}">
-                            <div class="card my-card shadow">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-usd"><br>Make Your Payments</i>
-                                    <h3></h3>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-    <div class="col-md-4 mt-4">
-        <div class="card" style="margin-top: 40px;">
-            <div class="card-header text-white" style="background-color: red; text-align: center;">
-                Pending Payments
-            </div>
-            <div class="card-body" style="background-color: red;">
-                <div class="row">
-                    <div class="paying" style="margin-left: 40px;">
-                        <a class="text-decoration-none text-dark" href="{% url 'driverspending' %}">
-                            <div class="card my-card shadow">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-usd"><br>Your Pending Payments</i>
-                                    <h3></h3>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-    <div class="col-md-4 mt-4">
-        <div class="card" style="margin-top: 40px;">
-            <div class="card-header text-white" style="background-color: green; text-align: center;">
-                Income Earned
-            </div>
-            <div class="card-body" style="background-color: green;">
-                <div class="row">
-                    <div class="paying" style="margin-left: 80px;">
-                        <a class="text-decoration-none text-dark" href="{% url 'pay' %}">
-                            <div class="card my-card shadow">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-usd"><br>Total Income</i>
-                                    <h3></h3>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-</div>
+{% include 'others/driversidebar.html'%}
+<style>
+  .table{
+      font-size: 13px;
+      text-align: center;
+  }
+  .table tr:nth-child(odd){
+      background: white;
+  }
+  .table tr:nth-child(even){
+      background: #dae5f4;
+  }
+  th{
+      background-color: #B8CAE4;
+      color: white;
+  }
+</style>
 
+{% block content %}
+{% for message in messages %}
+<div style="width: 50%; margin-top: 58pxpx; margin-left: 270px;" class="alert alert-success" role="alert">{{message}}</div>
+{% endfor %}
+<div class="table" style="margin-top: 50px; margin-left: 270px; margin-right: 30px; width: 70%;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Driver</th>
+                <th scope="col">Payment made</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Date of payment</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+ 
+            </tr>
+        {% for payment in object_list %}
+        {% if 0 > payment.balance %}
+        <tbody>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{ payment.driver }}</td>
+            <td>UGX{{ payment.payment_made }}</td>
+            <td>UGX{{ payment.balance }}</td>
+            <td> {{ payment.date_of_payment }}</td>
+            <td> {{ payment.status }}</td>
+            <td><a type="button" href="#" class="btn btn-danger">Delete</a></td>
+
+        </tbody>
+        {% endif %}
+        {% endfor %}
+    </table>
+    {% if is_paginated %}
+    <nav class="d-flex justify-content-center wow fadeIn">
+      <ul class="pagination pg-blue">
+
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        {% endif %}
+
+        <li class="page-item active">
+          <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+</div>
 {% endblock %}

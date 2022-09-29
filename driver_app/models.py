@@ -1,9 +1,12 @@
+from cProfile import label
+from multiprocessing.sharedctypes import Value
 from django.db import models
 from django.conf import settings
 from accounts.models import Account
 
 # Create your models here.
 class Info(models.Model):
+    author = models.CharField(verbose_name="title", max_length=100, null=True)
     title = models.CharField(verbose_name="title", max_length=100, null=True)
     information = models.CharField(verbose_name="information", max_length=2000, null=True)
 

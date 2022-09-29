@@ -5,13 +5,11 @@
             <div class="card-header bg-info text-white">
                 Information
             </div>
-            {% for instance in queryset %}
             <div class="card-body">
                 <marquee behavior="" direction="">
-                    <h3 class="my-4">{{ instance.information }}</h3>
+                    <h3 class="my-4">{{ info.count }}</h3>
                 </marquee>
             </div>
-            {% endfor %}
         </div>
     </div>
     <div class="col-md-8 mt-4">

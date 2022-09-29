@@ -37,6 +37,7 @@
  
             </tr>
         {% for payment in object_list %}
+        {% if 0  > payment.balance %}
         <tbody>
             <th scope="row">{{forloop.counter}}</th>
             <td>{{ payment.driver }}</td>
@@ -47,6 +48,7 @@
             <td><a type="button" href="#" class="btn btn-danger">Delete</a></td>
 
         </tbody>
+        {% endif %}
         {% endfor %}
     </table>
     {% if is_paginated %}

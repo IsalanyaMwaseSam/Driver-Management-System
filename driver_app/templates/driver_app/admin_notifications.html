@@ -1,0 +1,25 @@
+{% load static %}
+{% include 'others/base.html' %}
+{% include 'others/adminsidebar.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="card" style="margin-top: 58px; margin-left: 270px; margin-right: 20px; height: 45px;">
+        <h3 style="text-align: center; padding-top: 0px;">Add New Notifications</h3>
+        <form style=" height: 600px; padding-top: 60px; padding-left: 50px; background-color: gainsboro;"  method="post" >
+            {% csrf_token %}	
+            <div class="form-row" >
+                <div class="col-md-6 mb-0">
+                  {{ form.author|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                  {{ form.title|as_crispy_field }}
+                </div>
+                <div class="col-md-6 mb-0">
+                  {{ form.information|as_crispy_field }}
+                </div>
+            </div>
+            <input style="margin-left: 10px;" class="btn btn-primary" type="submit" href ="{% url 'home' %}" value="Post">
+        </form> 
+    </div>    
+{% endblock %}

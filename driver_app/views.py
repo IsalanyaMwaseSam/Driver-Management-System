@@ -16,7 +16,18 @@ from paypal.standard.forms import PayPalPaymentsForm
 # Create your views here.
 def home(request):
     queryset = Info.objects.all()
-    context = {'queryset':queryset}
+    staff = Account.objects.all()
+    payment = Payment.objects.all()
+    cars = Cars.objects.all()
+    staff_count = staff.count()
+    car_count = cars.count()
+    payment_count = payment.count()
+    context = {'queryset':queryset,
+                'staff': staff,
+                'staff_count': staff_count,
+                'car_count': car_count,
+                'payment_count': payment_count
+    }
     return render(request, 'driver_app/owner.html', context)
 
 def landing(request):
@@ -50,6 +61,7 @@ class StaffView(ListView):
     model = Account
     template_name = 'driver_app/staff.html'
     paginate_by = 6
+    
 
 
 
@@ -58,17 +70,26 @@ class CarView(ListView):
     paginate_by = 6
     template_name = 'driver_app/cars.html'
 
-def payment(request):
-    return render(request, 'driver_app/payment.html', {})   
+
+class paymentView(ListView):
+    model = Payment
+    paginate_by = 6
+    template_name = 'driver_app/payment.html' 
+
+    def get_queryset(self):
+        return Payment.objects.filter(driver=self.request.user)
+
 
 def pay(request):
     return render(request, 'driver_app/pay.html', {}) 
 
-def ownerspay(request):
-    return render(request, 'driver_app/ownerspay.html', {}) 
+class pendingView(ListView):
+    model = Payment
+    paginate_by = 6
+    template_name = 'driver_app/driverspending.html' 
 
-def driverspending(request):
-    return render(request, 'driver_app/driverspending.html', {}) 
+    def get_queryset(self):
+        return Payment.objects.filter(driver=self.request.user) 
 
 def delete_user(request, account_id):
     account = Account.objects.get(pk=account_id)
@@ -121,6 +142,7 @@ class PaymentView(ListView):
     paginate_by = 6
     template_name = 'driver_app/admin_complete_payments.html'
 
+
 class PendingPaymentView(ListView):
     model = Payment
     paginate_by = 6
@@ -131,6 +153,24 @@ def createnotifications(request):
 
 def notification(request):
     info = Info.objects.all()
-    notifications = Info.objects.all().count()
-    return render(request, 'driver_app/notifications.html', {'info':info, 'notifications':notifications})
+    notifications = Info.objects.all()
+    notification_count = notifications.count()
+    context = {
+        'info': info,
+        'notifications': notifications,
+        'notification_count': notification_count
+    }
+    return render(request, 'driver_app/notifications.html', context)
 
+def new_notification(request):
+    form = NotificationForm(request.POST)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'New notification posted!')
+            return redirect('home')
+    context = {'form':form}
+    return render(request, 'driver_app/admin_notifications.html', context)
+
+def statistics(request):
+    return render(request, 'driver_app/stats.html', {}) 

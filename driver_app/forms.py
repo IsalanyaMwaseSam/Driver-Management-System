@@ -1,6 +1,6 @@
 from cProfile import Profile
 from django import forms
-from .models import Cars, Payment
+from .models import Cars, Info, Payment
 from accounts.models import Account
 
 
@@ -40,4 +40,13 @@ class PaymentForm(forms.ModelForm):
     class Meta:
         model = Payment
         fields = ('driver', 'payment_made', 'balance', 'date_of_payment', 'status')
+
+class NotificationForm(forms.ModelForm):
+    author = forms.CharField(required=False, widget=forms.TextInput(attrs={}))
+    title = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder': 'title'}))
+    information = forms.CharField(required=False, widget=forms.Textarea)
+
+    class Meta:
+        model = Info
+        fields = ('author', 'title', 'information')
 
