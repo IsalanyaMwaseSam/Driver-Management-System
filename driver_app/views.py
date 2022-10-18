@@ -1,4 +1,5 @@
 from ast import Delete
+from multiprocessing import context
 from django.shortcuts import render, redirect
 from accounts.models import *
 from driver_app.models import Info, Payment
@@ -173,4 +174,8 @@ def new_notification(request):
     return render(request, 'driver_app/admin_notifications.html', context)
 
 def statistics(request):
-    return render(request, 'driver_app/stats.html', {}) 
+    payments = Payment.objects.all()
+    context = {
+        'payments': payments,
+    }
+    return render(request, 'driver_app/stats.html', context) 
